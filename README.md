@@ -33,6 +33,10 @@ your own full node.
 
 `docker-compose up -d`
 
+## Shutting Down
+BCHD needs time to gracefully shut down its database. If not shutdown cleanly, it can take a long time on the next startup to repair its mempool. To shutdown the container, run the shutdown script with this command:
+
+- `./stop-bchd.sh`
 
 # License
 [MIT License](LICENSE.md)

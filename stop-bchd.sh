@@ -1,3 +1,3 @@
 #!/bin/bash
-docker-compose stop -t 30000
+docker-compose down -t 30000
 
