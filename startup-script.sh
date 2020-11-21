@@ -16,8 +16,8 @@ stopBitcoind() {
   #bitcoin-cli -conf=/data/bitcoin.conf stop
   /root/go/bin/bchctl stop
 
-  # Wait 5 seconds for bitcoind to do its thing.
-  sleep 8
+  # Wait for BCHD to shutdown gracefully.
+  sleep 10
 
   echo "...bchd has exited."
 }
