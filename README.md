@@ -32,3 +32,7 @@ your own full node.
 - Enter the `docker-bchd` directory and start the container with this command:
 
 `docker-compose up -d`
+
+
+# License
+[MIT License](LICENSE.md)
