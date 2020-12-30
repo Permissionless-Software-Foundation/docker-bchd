@@ -1,0 +1,18 @@
+bchd:
+  build: .
+  dockerfile: Dockerfile
+  #image: christroutner/bitcoind-bch-abc-0.21.9
+  container_name: bchd
+  ports:
+    - "8334:8334"   # RPC mainnet port
+    - "8333:8333"   # p2p mainnet port
+    #- "28332:28332" # ZMQ port
+  volumes:
+    - ../config:/root/config
+    - ../bchd-data:/data
+
+  #restart: always
+  #stop_signal: SIGINT
+  #stop_signal: SIGTERM #default
+  #stop_signal: SIGKILL
+  #stop_signal: SIGHUP
