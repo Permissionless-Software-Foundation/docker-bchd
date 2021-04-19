@@ -18,8 +18,8 @@ WORKDIR /root
 # Install Go
 RUN wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
 RUN tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
-RUN export PATH=$PATH:/usr/local/go/bin
 RUN rm go1.15.5.linux-amd64.tar.gz
+ENV PATH "$PATH:/usr/local/go/bin"
 
 # Install BCHD
 RUN /usr/local/go/bin/go get https://github.com/gcash/bchd || echo 1
