@@ -22,10 +22,10 @@ RUN rm go1.15.5.linux-amd64.tar.gz
 ENV PATH "$PATH:/usr/local/go/bin"
 
 # Install BCHD
-RUN /usr/local/go/bin/go get https://github.com/gcash/bchd || echo 1
+RUN go get github.com/gcash/bchd
 WORKDIR /root/go/src/github.com/gcash/bchd
-RUN /usr/local/go/bin/go install .
-RUN /usr/local/go/bin/go install ./cmd/bchctl
+RUN go install .
+RUN go install ./cmd/bchctl
 
 # Symlink the config to /root/.bchd/bchd.conf
 # so bchctl requires fewer flags.
