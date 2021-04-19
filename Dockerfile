@@ -1,4 +1,5 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.10
+# FROM ubuntu:18.04
 MAINTAINER Chris Troutner <chris.troutner@gmail.com>
 
 # Update the OS and install any OS packages needed.
@@ -21,8 +22,8 @@ RUN export PATH=$PATH:/usr/local/go/bin
 RUN rm go1.15.5.linux-amd64.tar.gz
 
 # Install BCHD
-RUN /usr/local/go/bin/go get github.com/simpleledgerinc/bchd || echo 1
-WORKDIR /root/go/src/github.com/simpleledgerinc/bchd
+RUN /usr/local/go/bin/go get https://github.com/gcash/bchd || echo 1
+WORKDIR /root/go/src/github.com/gcash/bchd
 RUN /usr/local/go/bin/go install .
 RUN /usr/local/go/bin/go install ./cmd/bchctl
 
@@ -44,5 +45,5 @@ COPY startup-script.sh startup-script.sh
 CMD ["./startup-script.sh"]
 
 # Used for debugging.
-#COPY dummyapp.js dummyapp.js
-#CMD ["node", "dummyapp.js"]
+# COPY dummyapp.js dummyapp.js
+# CMD ["node", "dummyapp.js"]
