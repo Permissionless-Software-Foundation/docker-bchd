@@ -6,6 +6,7 @@ bchd:
   ports:
     - "8334:8334"   # RPC mainnet port
     - "8333:8333"   # p2p mainnet port
+    - "8080:8080"   # Proxy
     #- "28332:28332" # ZMQ port
   volumes:
     - ../config:/root/config
