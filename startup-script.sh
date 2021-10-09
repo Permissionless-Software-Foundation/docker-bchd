@@ -27,6 +27,10 @@ trap 'stopBitcoind' SIGTERM
 
 # Start bitcoind with the run script. Execute it in the background.
 ./run-script.sh &
+P1=$!
+# Start the proxy
+/root/go/src/github.com/simpleledgerinc/bchd/bchrpc/proxy/gw &
+P2=$!
 
 #Wait
-wait $!
+wait $P1 $P2

@@ -26,6 +26,18 @@ WORKDIR /root/go/src/github.com/simpleledgerinc/bchd
 RUN /usr/local/go/bin/go install .
 RUN /usr/local/go/bin/go install ./cmd/bchctl
 
+# Set up the proxy
+WORKDIR /root/go/src/github.com/simpleledgerinc/bchd/bchrpc/proxy
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+RUN /usr/local/go/bin/go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
+RUN /usr/local/go/bin/go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2
+RUN /usr/local/go/bin/go install github.com/golang/protobuf/protoc-gen-go
+RUN /usr/local/go/bin/go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+
+RUN make
+
 # Symlink the config to /root/.bchd/bchd.conf
 # so bchctl requires fewer flags.
 RUN mkdir -p /root/.bchd
