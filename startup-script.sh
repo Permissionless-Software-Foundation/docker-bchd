@@ -29,7 +29,7 @@ trap 'stopBitcoind' SIGTERM
 ./run-script.sh &
 P1=$!
 # Start the proxy
-/root/go/src/github.com/simpleledgerinc/bchd/bchrpc/proxy/gw &
+/root/go/src/github.com/simpleledgerinc/bchd/bchrpc/proxy/gw -bchd-grpc-url localhost:8334 &
 P2=$!
 
 #Wait
